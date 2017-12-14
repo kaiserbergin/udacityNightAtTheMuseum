@@ -1,6 +1,9 @@
 # ignore Unity proj hidden files
 *.DS_Store
 
+# ingore builds
+*.apk
+
 # ignore visual studio ide files
 *.csproj
 *.sln

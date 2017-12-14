@@ -16,14 +16,9 @@
 // full VR Keyboard.
 
 using UnityEngine;
+using UnityEngine.VR;
 using System;
 using System.Runtime.InteropServices;
-
-#if UNITY_2017_2_OR_NEWER
-using UnityEngine.XR;
-#else
-using UnityEngine.VR;
-#endif  // UNITY_2017_2_OR_NEWER
 
 /// @cond
 namespace Gvr.Internal {
@@ -200,7 +195,7 @@ namespace Gvr.Internal {
         isValid = true;
       }
 #endif // UNITY_ANDROID && !UNITY_EDITOR
-      InputTracking.disablePositionalTracking = true;
+      UnityEngine.XR.InputTracking.disablePositionalTracking = true;
       renderEventFunction = GetKeyboardRenderEventFunc();
     }
 

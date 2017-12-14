@@ -5,6 +5,9 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/Night at the Museum/Scenes/musuem.unity
-    guid: baf20881ce1c31742884fb1c4604f848
+    path: Assets/Night at the Museum/Scenes/Test.unity
+    guid: 95c82cf4d04b0924e9d4f696d3290b0c

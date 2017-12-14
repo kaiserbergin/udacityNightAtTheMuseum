@@ -1,4 +1,4 @@
-// Copyright 2017 Google Inc. All rights reserved.
+﻿// Copyright 2017 Google Inc. All rights reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -77,7 +77,9 @@ public class GvrTrackedController : MonoBehaviour {
   }
 
   void Awake() {
-    GvrControllerInput.OnStateChanged += OnControllerStateChanged;
+    if (isDeactivatedWhenDisconnected) {
+      GvrControllerInput.OnStateChanged += OnControllerStateChanged;
+    }
   }
 
   void OnEnable() {
@@ -90,6 +92,7 @@ public class GvrTrackedController : MonoBehaviour {
     /// time a frame is rendered.
     UpdatePose();
 
+    GvrControllerInput.OnStateChanged += OnControllerStateChanged;
     /// Check the controller state immediately whenever this script is enabled.
     OnControllerStateChanged(GvrControllerInput.State, GvrControllerInput.State);
   }

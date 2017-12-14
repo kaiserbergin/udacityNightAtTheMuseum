@@ -1,0 +1,11 @@
+# ignore Unity proj hidden files
+*.DS_Store
+
+# ignore visual studio ide files
+*.csproj
+*.sln
+**/.vs
+
+# ignore unnecessary directories
+**/Temp
+**/Library

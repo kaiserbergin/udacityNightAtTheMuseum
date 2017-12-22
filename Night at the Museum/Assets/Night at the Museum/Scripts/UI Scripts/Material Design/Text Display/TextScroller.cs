@@ -26,16 +26,12 @@ public class TextScroller : MonoBehaviour {
         textHeight = materialTextDisplay.preferredHeight;        
     }
 
-    private void Start() {
-        float rectY = textHeight / 2 * -1;
-
-        Vector2 sizeDelta = rectTransform.sizeDelta;
+    private void Start() {Vector2 sizeDelta = rectTransform.sizeDelta;
         sizeDelta.y = textHeight;
         rectTransform.sizeDelta = sizeDelta;
 
-        scrollPosition = rectY;
-        originalPosition = rectY;
-        Debug.Log(scrollPosition);
+        scrollPosition = rectTransform.localPosition.y;
+        originalPosition = rectTransform.localPosition.y;
     }
 
     public bool CanScrollUp() {
@@ -43,13 +39,13 @@ public class TextScroller : MonoBehaviour {
     }
 
     public bool CanScrollDown() {
-        return scrollPosition <= textHeight / 2 - scrollDistance;
+        return scrollPosition < textHeight / 2;
     }
 
     public void ScrollUp() {
         float updatedScrollHeight = scrollPosition + scrollDistance * -1;
         if (updatedScrollHeight < originalPosition) updatedScrollHeight = originalPosition;
-        Sequence scrollUpSequence = DOTween.Sequence();
+        Sequence scrollUpSequence = DOTween.Sequence();        
         scrollUpSequence.Append(transform.DOLocalMoveY(updatedScrollHeight, scrollAnimationLength));
         scrollPosition = updatedScrollHeight;
         Debug.Log(scrollPosition);
@@ -58,9 +54,9 @@ public class TextScroller : MonoBehaviour {
     public void ScrollDown() {
         float updatedScrollHeight = scrollPosition + scrollDistance;        
         if (updatedScrollHeight > textHeight / 2) updatedScrollHeight = textHeight / 2;
+        Vector3 test = transform.localPosition;
         Sequence scrollDownSequence = DOTween.Sequence();
         scrollDownSequence.Append(transform.DOLocalMoveY(updatedScrollHeight, scrollAnimationLength));
         scrollPosition = updatedScrollHeight;
-        Debug.Log(scrollPosition);
     }
 }
